@@ -1,0 +1,12 @@
+name: Create and deploy release
+on:
+  push:
+    uses: OctopusDeploy/create-release-action@v1
+    with:
+      api_key: ${{ secrets.OCTOPUSSERVERAPIKEY }}
+      server: ${{ secrets.OCTOPUSSERVERURL }}
+      space: ${{ secrets.OCTOPUSSERVER_SPACE }}
+      project: "Octo Pet Shop"
+      deploy_to: "Development"
+      progress: true
+
