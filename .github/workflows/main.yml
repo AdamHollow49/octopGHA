@@ -1,7 +1,7 @@
-- name: Install Octopus CLI
-  # You may pin to the exact commit or the version.
-  # uses: OctopusDeploy/install-octopus-cli-action@b44313a25eb0e47b3d726eb7a080e0c5de9186ed
-  uses: OctopusDeploy/install-octopus-cli-action@v3.0.0
-  with:
-    # Octopus CLI version
-    version: # optional, default is latest
+name: Install Octopus CLI
+# You may pin to the exact commit or the version.
+# uses: OctopusDeploy/install-octopus-cli-action@b44313a25eb0e47b3d726eb7a080e0c5de9186ed
+uses: OctopusDeploy/install-octopus-cli-action@v3.0.0
+with:
+  # Octopus CLI version
+  version: # optional, default is latest
