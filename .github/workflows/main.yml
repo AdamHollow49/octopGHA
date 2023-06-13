@@ -5,3 +5,5 @@ uses: OctopusDeploy/install-octopus-cli-action@v3.0.0
 with:
   # Octopus CLI version
   version: # optional, default is latest
+on:
+  push:
