@@ -17,7 +17,7 @@ jobs:
 
    steps:
    - run: git clone "https://github.com/AdamHollow49/octopGHA/"
-   - run: ls -a
+   - run: ls -a octopGHA
    - name: Push a package to Octopus Deploy 🐙
      uses: OctopusDeploy/push-package-action@v3
      env:
@@ -26,7 +26,7 @@ jobs:
         OCTOPUS_SPACE: 'Adam'
      with:
       packages: |
-        octopgHA/.github/workflows/yamlTest.1.0.0.zip
+        octopgHA/yamlTest.1.0.0.zip
  
    - name: Create Release in Octopus Deploy
      uses: OctopusDeploy/create-release-action@v3.0.5
