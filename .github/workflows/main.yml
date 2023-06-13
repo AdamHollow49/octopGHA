@@ -16,10 +16,6 @@ jobs:
    runs-on: ubuntu-latest
 
    steps:
-   - run: git clone "https://github.com/AdamHollow49/octopGHA/"
-   - run: ls -a octopGHA
-   - run: ls -a ${{ github.workspace }}
-   - run: ls -a ${{ github.workspace }}/octopGHA
    - name: Push a package to Octopus Deploy 🐙
      uses: OctopusDeploy/push-package-action@v3
      env:
