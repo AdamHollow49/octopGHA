@@ -9,6 +9,7 @@ on:
 env:  
   OCTOPUS_PROJECT_NAME: '118966'
   OCTOPUS_SPACE_NAME: Adam
+  PROJECT_DATA: '[{"Name":"${{ env.OCTOPUS_PROJECT_NAME }}","Description":"", "ProjectGroupID":"ProjectGroups-1854","LifeCycleID":"Lifecycles-361"}]'
 
 jobs:
  build:
@@ -23,3 +24,15 @@ jobs:
        project: ${{ env.OCTOPUS_PROJECT_NAME }}
        server: ${{ secrets.OCTOPUS_URL }}
        space: ${{ env.OCTOPUS_SPACE_NAME }}
+     
+   - name: PowerShell script
+  # You may pin to the exact commit or the version.
+  # uses: Amadevus/pwsh-script@97a8b211a5922816aa8a69ced41fa32f23477186
+     uses: Amadevus/pwsh-script@v2.0.3
+     with:
+    # PowerShell script to execute in Actions-hydrated context
+      script: 
+        Invoke-RestMethod -Method Post -Uri "${{ secrets.OCTOPUS_URL }}/api/spaces-262/projects" -Body (${{ env.PROJECT_DATA }} | ConvertTo-Json -Depth 10) -Headers @{ "X-Octopus-ApiKey" = ${{ secrets.API_KEY }} }
+}
+       
+      
