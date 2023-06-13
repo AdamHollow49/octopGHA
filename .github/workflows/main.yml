@@ -9,7 +9,6 @@ on:
 env:  
   OCTOPUS_PROJECT_NAME: 'GHA #1'
   OCTOPUS_SPACE_NAME: Adam
-  PROJECT_DATA: '[{"Name":"${{ env.OCTOPUS_PROJECT_NAME }}","Description":"", "ProjectGroupID":"ProjectGroups-1854","LifeCycleID":"Lifecycles-361"}]'
 
 jobs:
  build:
