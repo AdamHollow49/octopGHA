@@ -12,7 +12,7 @@ env:
 
 jobs:
  build:
-   name: Create Release
+   name: Push Package and Create Release
    runs-on: ubuntu-latest
 
    steps:
@@ -23,9 +23,10 @@ jobs:
         OCTOPUS_API_KEY: ${{ secrets.API_KEY }}
         OCTOPUS_URL: ${{ secrets.OCTOPUS_URL }}
         OCTOPUS_SPACE: 'Adam'
+        PACKAGE_VERSION: 1.0.1
      with:
       packages: |
-        ${{ github.workspace }}/octopGHA/yamlTest.1.0.0.zip
+        ${{ github.workspace }}/octopGHA/yamlTest.${{ env.PACKAGE_VERSION}}.zip
  
    - name: Create Release in Octopus Deploy
      uses: OctopusDeploy/create-release-action@v3.0.5
@@ -34,4 +35,5 @@ jobs:
        project: ${{ env.OCTOPUS_PROJECT_NAME }}
        server: ${{ secrets.OCTOPUS_URL }}
        space: ${{ env.OCTOPUS_SPACE_NAME }}
+       package_version: ${{ env.PACKAGE_VERSION}}
       
