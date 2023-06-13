@@ -26,7 +26,7 @@ jobs:
         OCTOPUS_SPACE: 'Adam'
      with:
       packages: |
-        yamlTest.1.0.0.zip
+        octopgHA/.github/workflows/yamlTest.1.0.0.zip
  
    - name: Create Release in Octopus Deploy
      uses: OctopusDeploy/create-release-action@v3.0.5
