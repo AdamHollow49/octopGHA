@@ -5,6 +5,7 @@ on:
     branches: 
       - master
       - test
+      - main
 env:  
   OCTOPUS_PROJECT_NAME: '118966'
   OCTOPUS_SPACE_NAME: Adam
