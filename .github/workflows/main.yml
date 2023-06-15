@@ -9,6 +9,8 @@ on:
 env:  
   OCTOPUS_PROJECT_NAME: 'GHA #1'
   OCTOPUS_SPACE_NAME: Adam
+  OCTOPUS_SPACE: 'Adam'
+  PACKAGE_VERSION: 1.0.1
 
 jobs:
  build:
@@ -22,13 +24,12 @@ jobs:
      env:
         OCTOPUS_API_KEY: ${{ secrets.API_KEY }}
         OCTOPUS_URL: ${{ secrets.OCTOPUS_URL }}
-        OCTOPUS_SPACE: 'Adam'
-        PACKAGE_VERSION: 1.0.1
      with:
       packages: |
         ${{ github.workspace }}/octopGHA/yamlTest.${{ env.PACKAGE_VERSION}}.zip
  
    - name: Create Release in Octopus Deploy
+   - id: releaseCreate
      uses: OctopusDeploy/create-release-action@v3.0.5
      with:
        api_key: ${{ secrets.API_KEY }}
@@ -37,11 +38,13 @@ jobs:
        space: ${{ env.OCTOPUS_SPACE_NAME }}
        package_version: ${{ env.PACKAGE_VERSION}}
   
+   - run: echo ${{ releaseCreate.outputs.release_number }}
+   
    - name: Deploy a Release in Octopus Deploy
      uses: OctopusDeploy/deploy-release-action@v3.0.4
      with:
        project: ${{ env.OCTOPUS_PROJECT_NAME }}
-       release_number: ${{ env.PACKAGE_VERSION}}
+       release_number: ${{ releaseCreate.outputs.release_number }}
        environments: Production
        server: ${{ secrets.OCTOPUS_URL }}
        api_key: ${{ secrets.API_KEY }}
