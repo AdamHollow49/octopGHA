@@ -36,4 +36,13 @@ jobs:
        server: ${{ secrets.OCTOPUS_URL }}
        space: ${{ env.OCTOPUS_SPACE_NAME }}
        package_version: ${{ env.PACKAGE_VERSION}}
-      
+  
+   - name: Deploy a Release in Octopus Deploy
+     uses: OctopusDeploy/deploy-release-action@v3.0.4
+     with:
+       project: ${{ env.OCTOPUS_PROJECT_NAME }}
+       release_number: ${{ env.PACKAGE_VERSION}}
+       environments: Production
+       server: ${{ secrets.OCTOPUS_URL }}
+       api_key: ${{ secrets.API_KEY }}
+       space: ${{ env.OCTOPUS_SPACE_NAME }}
