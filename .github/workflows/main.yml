@@ -25,11 +25,12 @@ jobs:
         OCTOPUS_API_KEY: ${{ secrets.API_KEY }}
         OCTOPUS_URL: ${{ secrets.OCTOPUS_URL }}
      with:
+      overwrite_mode: OverwriteExisting
       packages: |
         ${{ github.workspace }}/octopGHA/yamlTest.${{ env.PACKAGE_VERSION}}.zip
  
    - name: Create Release in Octopus Deploy
-   - id: releaseCreate
+     id: releaseCreate
      uses: OctopusDeploy/create-release-action@v3.0.5
      with:
        api_key: ${{ secrets.API_KEY }}
