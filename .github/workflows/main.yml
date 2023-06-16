@@ -44,7 +44,7 @@ jobs:
      with:
       overwrite_mode: OverwriteExisting
       packages: |
-        ${{ steps.CreatePackage.outputs.Package_File_Path
+        ${{ steps.CreatePackage.outputs.Package_File_Path }}
  
    - name: Create Release in Octopus Deploy
      id: releaseCreate
