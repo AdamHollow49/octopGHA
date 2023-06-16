@@ -6,7 +6,7 @@ body {
 	font-family: 'Roboto', sans-serif;
 	margin: 0;
 	padding: 0;
-	background: #{bgColour};
+	background: RGB(0, 128, 255);
 }
 
 ul {
