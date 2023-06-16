@@ -26,9 +26,12 @@ jobs:
   # uses: OctopusDeploy/create-zip-package-action@4e6bb23129c1cc5e337d1f74a200abba63de4b62
      uses: OctopusDeploy/create-zip-package-action@v3.0.2
      with:
+        api_key: ${{ secrets.API_KEY }}
+        server: ${{ secrets.OCTOPUS_URL }}
+        space: ${{ env.OCTOPUS_SPACE_NAME }}
         package_id: js-to-do-master
         version: ${{ env.PACKAGE_VERSION }}
-        output_folder: /
+        output_folder: ./
         base_path: ${{ github.workspace }}/octopGHA/js-to-do-master
         files: |
            **/*.*
