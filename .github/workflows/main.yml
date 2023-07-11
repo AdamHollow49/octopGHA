@@ -48,7 +48,7 @@ jobs:
     
          
    - name: Push Build Information
-     uses: OctopusDeploy/push-build-information-action@v3.0.1
+     uses: OctopusDeploy/push-build-information-action@v3
      with:
        api_key: ${{ secrets.API_KEY }}
        project: ${{ env.OCTOPUS_PROJECT_NAME }}
