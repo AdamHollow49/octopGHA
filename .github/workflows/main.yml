@@ -45,6 +45,18 @@ jobs:
       overwrite_mode: OverwriteExisting
       packages: |
         ${{ steps.CreatePackage.outputs.Package_File_Path }}
+    
+         
+   - name: Push Build Information
+     uses: OctopusDeploy/push-build-information@v3.0.1
+     with:
+       api_key: ${{ secrets.API_KEY }}
+       project: ${{ env.OCTOPUS_PROJECT_NAME }}
+       server: ${{ secrets.OCTOPUS_URL }}
+       space: ${{ env.OCTOPUS_SPACE_NAME }}
+       version: ${{ env.PACKAGE_VERSION}}
+       package: js-to-do-master
+       overwrite_mode: OverwriteExisting
  
    - name: Create Release in Octopus Deploy
      id: releaseCreate
@@ -67,4 +79,5 @@ jobs:
        server: ${{ secrets.OCTOPUS_URL }}
        api_key: ${{ secrets.API_KEY }}
        space: ${{ env.OCTOPUS_SPACE_NAME }}
+
 
