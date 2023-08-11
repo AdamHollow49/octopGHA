@@ -67,6 +67,8 @@ jobs:
        server: ${{ secrets.OCTOPUS_URL }}
        space: ${{ env.OCTOPUS_SPACE_NAME }}
        package_version: ${{ env.PACKAGE_VERSION}}
+       if: ${{ env.OCTOPUS_IS_GIT_CONTROLLED_PROJECT == 'true' && github.ref }}
+       git_ref: ${{ github.ref }}
   
    - run: echo ${{ steps.releaseCreate.outputs.release_number }}
    
